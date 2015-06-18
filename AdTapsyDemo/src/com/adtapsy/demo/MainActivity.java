@@ -17,7 +17,6 @@ public class MainActivity extends AdTapsyActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
 		AdTapsy.startSession(this, "54982cf7e4b052cd2a20a7b8");
 		AdTapsy.showInterstitial(this);
 
@@ -43,6 +42,11 @@ public class MainActivity extends AdTapsyActivity {
 				System.out.println("***onAdClicked***");
 
 			}
+			
+			@Override
+			public void onAdCached() {
+				System.out.println("***onAdCached***");
+			}
 		});
 
 		((Button) findViewById(R.id.showAdBtn))
@@ -50,7 +54,12 @@ public class MainActivity extends AdTapsyActivity {
 
 					@Override
 					public void onClick(View v) {
-						AdTapsy.showInterstitial(MainActivity.this);
+						if(AdTapsy.isAdReadyToShow()){
+							System.out.println("Ad is ready to show");
+							AdTapsy.showInterstitial(MainActivity.this);
+						} else {
+							System.out.println("Ad is not ready to be shown");
+						}
 					}
 				});
 	}
