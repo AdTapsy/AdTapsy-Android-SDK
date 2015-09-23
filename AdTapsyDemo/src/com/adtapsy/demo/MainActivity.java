@@ -1,6 +1,7 @@
 package com.adtapsy.demo;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import com.adtapsy.sdk.AdTapsy;
 import com.adtapsy.sdk.AdTapsyActivity;
 import com.adtapsy.sdk.AdTapsyDelegate;
+import com.adtapsy.sdk.AdTapsyRewardedDelegate;
 
 public class MainActivity extends AdTapsyActivity {
 
@@ -18,34 +20,57 @@ public class MainActivity extends AdTapsyActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		AdTapsy.startSession(this, "54982cf7e4b052cd2a20a7b8");
+		AdTapsy.setRewardedVideoAmount(10);
 		AdTapsy.showInterstitial(this);
-
+		
 		AdTapsy.setDelegate(new AdTapsyDelegate() {
-
 			@Override
-			public void onAdSkipped() {
-				System.out.println("***onAdSkipped***");
-			} 
-
-			@Override
-			public void onAdShown() {
-				System.out.println("***onAdShown***");
+			public void onAdSkipped(int zoneId) {
+				if(zoneId == AdTapsy.INTERSTITIAL_ZONE){
+					Log.d("AdTapsy Delegate", "Ad skipped from interstitial zone ");
+				} else if(zoneId == AdTapsy.REWARDED_VIDEO_ZONE){
+					Log.d("AdTapsy Delegate", "Ad skipped from rewarded video zone ");
+				}
 			}
-
 			@Override
-			public void onAdFailToShow() {
-				System.out.println("***onAdFailToShow***");
+			public void onAdShown(int zoneId) {
+				if(zoneId == AdTapsy.INTERSTITIAL_ZONE){
+					Log.d("AdTapsy Delegate", "Ad shown from interstitial zone");					
+				} else if(zoneId == AdTapsy.REWARDED_VIDEO_ZONE){
+					Log.d("AdTapsy Delegate", "Ad shown from rewarded video zone");
+				}
 			}
-
 			@Override
-			public void onAdClicked() {
-				System.out.println("***onAdClicked***");
-
+			public void onAdFailToShow(int zoneId) {
+				if(zoneId == AdTapsy.INTERSTITIAL_ZONE){
+					Log.d("AdTapsy Delegate", "Ad failed to show from zone " + zoneId);					
+				} else if(zoneId == AdTapsy.REWARDED_VIDEO_ZONE){
+					Log.d("AdTapsy Delegate", "Ad failed to show from rewarded video zone");					
+				}
 			}
+			@Override
+			public void onAdClicked(int zoneId) {
+				if(zoneId == AdTapsy.INTERSTITIAL_ZONE){
+					Log.d("AdTapsy Delegate", "Ad clicked from interstitial zone");					
+				} else if(zoneId == AdTapsy.REWARDED_VIDEO_ZONE){
+					Log.d("AdTapsy Delegate", "Ad clicked from rewarded video zone");	
+				}
+			}
+			@Override
+			public void onAdCached(int zoneId) {
+				if(zoneId == AdTapsy.INTERSTITIAL_ZONE){
+					Log.d("AdTapsy Delegate", "Ad loaded from interstitial zone");					
+				} else if(zoneId == AdTapsy.REWARDED_VIDEO_ZONE){
+					Log.d("AdTapsy Delegate", "Ad loaded from rewarded zone zone");
+				}
+				 
+			}
+		});
+		AdTapsy.setRewardedDelegate(new AdTapsyRewardedDelegate() {
 			
 			@Override
-			public void onAdCached() {
-				System.out.println("***onAdCached***");
+			public void onRewardEarned(int amount) {
+				Log.d("AdTapsy Rewarded Delegate", "User earned " + amount + " coins");
 			}
 		});
 
@@ -54,7 +79,7 @@ public class MainActivity extends AdTapsyActivity {
 
 					@Override
 					public void onClick(View v) {
-						if(AdTapsy.isAdReadyToShow()){
+						if(AdTapsy.isInterstitialReadyToShow()){
 							System.out.println("Ad is ready to show");
 							AdTapsy.showInterstitial(MainActivity.this);
 						} else {
@@ -62,6 +87,19 @@ public class MainActivity extends AdTapsyActivity {
 						}
 					}
 				});
+		((Button) findViewById(R.id.showRewardedBtn))
+		.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if(AdTapsy.isRewardedVideoReadyToShow()){
+					System.out.println("Ad is ready to show");
+					AdTapsy.showRewardedVideo(MainActivity.this);
+				} else {
+					System.out.println("Ad is not ready to be shown");
+				}
+			}
+		});
 	}
 
 	@Override
