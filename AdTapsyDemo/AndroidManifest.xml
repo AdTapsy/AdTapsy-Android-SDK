@@ -35,11 +35,20 @@
         </activity>
 
         <!-- InMobi Activities -->
-        <activity
-            android:name="com.inmobi.androidsdk.IMBrowserActivity"
-            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<activity
+		    android:name="com.inmobi.rendering.InMobiAdActivity"
+		    android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
+		    android:hardwareAccelerated="true"
+		    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		
+		<receiver
+		android:name="com.inmobi.commons.core.utilities.uid.ImIdShareBroadCastReceiver"
+		android:enabled="true"
+		android:exported="true" >
+			<intent-filter>
+				<action android:name="com.inmobi.share.id" />
+			</intent-filter>
+		</receiver>
 
         <!-- AdColony Activities -->
         <activity
@@ -75,6 +84,14 @@
             android:theme="@android:style/Theme.Translucent" >
         </activity>
 
+        <!-- StartApp -->
+        <activity
+            android:name="com.startapp.android.publish.list3d.List3DActivity"
+            android:theme="@android:style/Theme" />
+        <activity
+            android:name="com.startapp.android.publish.AppWallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Translucent" />
     </application>
 
 </manifest>
