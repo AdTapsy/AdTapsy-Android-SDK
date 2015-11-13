@@ -1,0 +1,14 @@
+v1.2
+- Added rewarded video support for Vungle
+- Added support for apps under the regulations of COPPA
+- Updated AppLovin Android SDK to 6.1.4 
+- Updated Chartboost Android SDK to 6.0.2
+- Updated Vungle Android SDK to 3.3.3
+- Updated AdColony Android SDK to 2.3.0
+
+v1.1
+- Added rewarded video support for InMobi
+- Updated InMobi to v5.0.1
+
+v1.0
+- Added support for rewarded video
