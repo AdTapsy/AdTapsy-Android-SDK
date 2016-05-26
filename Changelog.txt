@@ -1,3 +1,11 @@
+v1.3
+- Updated InMobi to v5.3.1
+- Updated AdColony to v2.3.5
+- Updated AppLovin to v6.2.2
+- Updated Chartboost to v6.4.1
+- Updated RevMob to v9.0.8
+- Updated Vungle to v3.3.5
+
 v1.2
 - Added rewarded video support for Vungle
 - Added support for apps under the regulations of COPPA

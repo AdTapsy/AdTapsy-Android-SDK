@@ -1,6 +1,6 @@
-InMobi 5.0.1
-Adcolony v2.3
-Applovin v6.1.4
-Chartboost v6.0.2
-Revmob v9.0.4
-Vungle v3.3.3
+InMobi 5.3.1
+AdColony v2.3.5
+AppLovin v6.2.2
+Chartboost v6.4.1
+RevMob v9.0.8
+Vungle v3.3.5

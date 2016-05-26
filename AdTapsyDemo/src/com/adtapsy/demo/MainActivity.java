@@ -21,7 +21,6 @@ public class MainActivity extends AdTapsyActivity {
 		setContentView(R.layout.activity_main);
 		AdTapsy.startSession(this, "54982cf7e4b052cd2a20a7b8");
 		AdTapsy.setRewardedVideoAmount(10);
-		AdTapsy.showInterstitial(this);
 		
 		AdTapsy.setDelegate(new AdTapsyDelegate() {
 			@Override
