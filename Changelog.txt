@@ -1,3 +1,11 @@
+v1.4
+- Updated AdColony to v3.0.7
+- Updated Applovin to v6.4.0
+- Updated Chartboost to v6.6.1
+- Updated InMobi to v6.0.4
+- Updated RevMob to v9.2.3
+- Updated Vungle to v4.0.3
+
 v1.3
 - Updated InMobi to v5.3.1
 - Updated AdColony to v2.3.5
