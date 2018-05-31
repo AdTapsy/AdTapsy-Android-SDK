@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
     // AdTapsy
-    implementation 'com.adtapsy.sdk:adtapsy:1.5'
+    implementation 'com.adtapsy.sdk:adtapsy:1.6'
 
     // Google play services
     implementation 'com.google.android.gms:play-services-gcm:15.0.1'

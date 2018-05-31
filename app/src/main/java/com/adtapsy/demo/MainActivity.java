@@ -23,6 +23,7 @@ public class MainActivity extends AdTapsyActivity {
         AdTapsy.setUserSubjectToGdpr(true);
         AdTapsy.setConsentGrantedGdpr(false);
 
+        AdTapsy.setTestMode(true, "CE5828E9450B0FE35ECA3E4F951A3208");
         AdTapsy.startSession(this, "54982cf7e4b052cd2a20a7b8");
         AdTapsy.setRewardedVideoAmount(10);
 
